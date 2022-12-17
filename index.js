@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const cors = require('cors');
 
-
+app.use(cors());
 
 
 //the routes
@@ -53,7 +53,14 @@ app.get("/" , (req,res) =>{
     })
 });
 
-app.use(cors());
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
 
 const PORT = 8080;
 app.listen(PORT, ()=> {
