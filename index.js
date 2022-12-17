@@ -5,6 +5,7 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const cors = require('cors');
 
 
 
@@ -50,7 +51,11 @@ app.get("/" , (req,res) =>{
     res.status(200).send({
         message: "The Application is Running, hit /api/v1/posts to see Data"
     })
-})
+});
+
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 
 const PORT = 8080;
 app.listen(PORT, ()=> {
