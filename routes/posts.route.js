@@ -33,7 +33,9 @@ router.get("/:id" , async(req,res) => {
     res.status(200).json({
         title : post.title,
         desc : post.desc,
-        owner : post.username
+        username : post.username,
+        createdAt: post.createdAt,
+        categories : post.categories
     })
 });
 
